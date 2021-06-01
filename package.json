@@ -9,7 +9,8 @@
     "build:server": "cross-env VUE_ENV=server vue-cli-service build --no-clean",
     "build:client": "vue-cli-service build",
     "build": "npm-run-all -p build:**",
-    "start": "cross-env NODE_ENV=production nodemon server/index.js"
+    "start": "cross-env NODE_ENV=production nodemon server/index.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -48,14 +49,8 @@
     "vue-template-compiler": "^2.6.10",
     "webpack-node-externals": "^3.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
-    "/src/**": [
+    "src/**": [
       "eslint --fix",
       "prettier --write"
     ]
