@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <div class="home"></div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import titleMixins from '../mixins/title-mixin'
 export default {
-  name: "home",
-  components: {
-    HelloWorld
-  }
-};
+  name: 'home',
+  mixins: [titleMixins], // 加入mixins，通过title函数改变标题
+  asyncData({ store, route }) {
+    // console.log(store, route)
+  }, // 服务端和客户端预获取数据
+  title() {
+    return ''
+  },
+}
 </script>
+<style lang="less" scoped>
+</style>
